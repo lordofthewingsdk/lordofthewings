@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lord of the Wings mingus – Wingfoil Event, Ebeltoft</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-dark: #0f1a30;
+      --cream: #f5f0e8;
+      --cream-dark: #e8e0cf;
+      --gold: #c8a96e;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy-dark);
+      color: var(--cream);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(10, 15, 28, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+    }
+    .nav-logo { width: 52px; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+      background: var(--navy-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-logo {
+      width: 440px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      letter-spacing: 0.08em;
+      line-height: 1;
+      color: var(--cream);
+
+    }
+    .hero-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.1rem, 3vw, 1.8rem);
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin: 0.6rem 0 2rem;
+      text-transform: uppercase;
+    }
+    .hero-desc {
+      max-width: 600px;
+      font-size: 1.05rem;
+      opacity: 0.8;
+      margin-bottom: 2.5rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn:hover { background: var(--gold); color: var(--navy-dark); }
+    .btn-solid {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+    .btn-solid:hover { background: var(--cream); border-color: var(--cream); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    /* OM FORENINGEN */
+    .about { background: var(--navy); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-text p { opacity: 0.8; margin-bottom: 1rem; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .stat-card {
+      background: var(--navy-dark);
+      border: 1px solid rgba(200,169,110,0.25);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; letter-spacing: 0.15em; opacity: 0.6; text-transform: uppercase; margin-top: 0.3rem; }
+
+    /* MEMBERSHIP */
+    .membership { background: var(--navy-dark); }
+    .membership-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--navy);
+      border: 1px solid rgba(200,169,110,0.2);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: border-color 0.25s;
+    }
+    .card:hover { border-color: var(--gold); }
+    .card.featured {
+      border-color: var(--gold);
+    }
+    .card-badge {
+      position: absolute;
+      top: -1px; right: 2rem;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      padding: 0.25rem 0.8rem;
+    }
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .card-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .card-price span { font-size: 1rem; opacity: 0.7; }
+    .card ul { list-style: none; }
+    .card ul li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .card ul li::before { content: '—  '; color: var(--gold); }
+
+    /* RACES */
+    .races { background: var(--navy); }
+    .race-list { margin-top: 2rem; }
+    .race-item {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(245,240,232,0.08);
+    }
+    .race-date {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      min-width: 80px;
+      line-height: 1;
+    }
+    .race-month {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+    .race-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+    }
+    .race-info p { font-size: 0.88rem; opacity: 0.7; margin-top: 0.2rem; }
+    .race-badge {
+      margin-left: auto;
+      padding: 0.3rem 0.9rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+    }
+    .race-badge.next { background: var(--gold); color: var(--navy-dark); }
+
+    /* TILMELDING */
+    .signup { background: var(--navy-dark); }
+    .signup-box {
+      background: var(--navy);
+      border: 1px solid rgba(200,169,110,0.3);
+      padding: 3rem;
+      max-width: 680px;
+    }
+    .payment-info {
+      background: var(--navy-dark);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .payment-info strong { color: var(--gold); }
+    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: #070d1a;
+      border-top: 1px solid rgba(200,169,110,0.15);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-logo { width: 70px; margin-bottom: 1rem; opacity: 0.7; }
+    footer p { font-size: 0.85rem; opacity: 0.45; }
+
+    /* WAVE SEPARATOR */
+    .wave { display: block; width: 100%; }
+
+    @media (max-width: 700px) {
+      nav { padding: 0.8rem 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .signup-box { padding: 2rem 1.5rem; }
+      .race-item { flex-wrap: wrap; }
+      .race-badge { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img class="nav-logo" src="LOGO_transparent.png" alt="Lord of the Wings logo">
+  <ul class="nav-links">
+    <li><a href="#om">Om os</a></li>
+    <li><a href="#kontingent">Kontingent</a></li>
+    <li><a href="#races">Races</a></li>
+    <li><a href="#tilmeld">Tilmeld</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="LOGO_transparent.png" alt="Lord of the Wings">
+  <h1>Lord of the Wings</h1>
+  <p class="hero-sub">Wingfoil Event · Ebeltoft · Danmark</p>
+  <p class="hero-desc">En frivillig forening for dem, der lever og ånder for wingfoiling. Vi afholder races og events for amatører – alle niveauer velkomne.</p>
+  <a class="btn btn-solid" href="#tilmeld">Tilmeld dig nu</a>
+</section>
+
+<!-- OM FORENINGEN -->
+<section class="about" id="om">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">Om foreningen</p>
+        <h2 class="section-title">Skabt af wingfoilere,<br>for wingfoilere</h2>
+        <div class="divider"></div>
+        <p>Lord of the Wings er en frivillig forening stiftet i marts 2026 med base i Ebeltoft. Vi samler wingfoilere på alle niveauer til races og pop-up events i smukke danske farvande.</p>
+        <p>Vores mission er simpel: at bygge et stærkt, lokalt fællesskab omkring en af verdens hurtigst voksende vandsportsgrene – og have det sjovt undervejs.</p>
+        <p style="margin-top:1.5rem">
+          <a class="btn" href="#races">Se årets races →</a>
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Planlagte races</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2026</div>
+          <div class="stat-label">Stiftet</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">150 kr</div>
+          <div class="stat-label">Sæsonkontingent</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Havudsigt</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTINGENT -->
+<section class="membership" id="kontingent">
+  <div class="container">
+    <p class="section-label">Bliv medlem</p>
+    <h2 class="section-title">Hvad er med i pakken?</h2>
+    <div class="divider"></div>
+    <div class="membership-cards">
+
+      <div class="card featured">
+        <div class="card-badge">Anbefalet</div>
+        <div class="card-title">Sæsonmedlem</div>
+        <div class="card-price">150 kr <span>/ sæson</span></div>
+        <ul>
+          <li>Lycra t-shirt med LOTW logo og startnummer</li>
+          <li>Race-fee: <strong>100 kr</strong> pr. event</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Ikke-medlem</div>
+        <div class="card-price">200 kr <span>/ event</span></div>
+        <ul>
+          <li>Deltag i et enkelt race</li>
+        </ul>
+      </div>
+
+    </div>
+    <p style="margin-top:2rem; font-size:0.85rem; opacity:0.55;">Kontingent tilbagebetales ikke. Race-fee tilbagebetales ved aflysning.</p>
+  </div>
+</section>
+
+<!-- RACES -->
+<section class="races" id="races">
+  <div class="container">
+    <p class="section-label">Sæson 2026</p>
+    <h2 class="section-title">Årets races</h2>
+    <div class="divider"></div>
+
+    <div class="race-list">
+      <div class="race-item">
+        <div>
+          <div class="race-date">9–10</div>
+          <div class="race-month">Maj</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #1 – Ebeltoft Bugt</h3>
+          <p>Downwind course + rundbane · Surfline udstyrsdemo</p>
+        </div>
+        <div class="race-badge next">Næste weekend!</div>
+      </div>
+
+      <div class="race-item">
+        <div>
+          <div class="race-date">JUNI</div>
+          <div class="race-month">2026</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #2 – Ebeltoft Bugt</h3>
+          <p>Dato annonceres snarest</p>
+        </div>
+        <div class="race-badge">Kommende</div>
+      </div>
+
+      <div class="race-item">
+        <div>
+          <div class="race-date">Sept.</div>
+          <div class="race-month">2026</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #3 – TBA</h3>
+          <p>Dato annonceres snarest</p>
+        </div>
+        <div class="race-badge">Kommende</div>
+      </div>
+
+      <div class="race-item">
+        <div>
+          <div class="race-date">Okt.</div>
+          <div class="race-month">2026</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #4 – TBA</h3>
+          <p>Sæsonafslutning · Dato annonceres snarest</p>
+        </div>
+        <div class="race-badge">Kommende</div>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem; font-size:0.85rem; opacity:0.55;">Konkret tidsplan for hvert event annonceres når vejrudsigten er klar.</p>
+  </div>
+</section>
+
+<!-- PROGRAM RACE #1 -->
+<section style="background:var(--navy-dark); padding:4rem 2rem;">
+  <div class="container">
+    <p class="section-label">Program</p>
+    <h2 class="section-title">Race #1 · 9–10 Maj</h2>
+    <div class="divider"></div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-top:1.5rem;">
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Check-in</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;">Velkomst &amp; briefing · Tidsplan offentliggøres nærmere eventet</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Race 1</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;">Downwind course</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Pause</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;">Sodvand, øl &amp; pølser · Surfline udstyrsdemo</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Race 2</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;">Bane med runder</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Afslutning</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;">Præmier &amp; fælles fejring</div>
+      </div>
+    </div>
+    <p style="margin-top:2rem; font-size:0.9rem; opacity:0.65;">Alle niveauer er velkomne 🤙</p>
+  </div>
+</section>
+
+<!-- FØLG OS -->
+<section class="signup" id="foelg">
+  <div class="container">
+    <p class="section-label">Sociale medier</p>
+    <h2 class="section-title">Følg os her</h2>
+    <div class="divider"></div>
+    <div class="signup-box">
+      <div class="contact-links">
+        <a class="btn btn-solid" href="https://www.facebook.com/profile.php?id=61580798024798" target="_blank">Facebook →</a>
+        <a class="btn btn-solid" href="https://www.instagram.com/lordofthewings_dk" target="_blank">Instagram →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TILMELDING -->
+<section class="signup" id="tilmeld">
+  <div class="container">
+    <p class="section-label">Tilmelding</p>
+    <h2 class="section-title">Kom med på vandet</h2>
+    <div class="divider"></div>
+
+    <div class="signup-box">
+      <div class="contact-links" style="margin-bottom:1.5rem;">
+        <a class="btn btn-solid" href="https://docs.google.com/forms/d/e/1FAIpQLSfOFSm0_HygXoIe777RUOz4eMYswDSGMO_b1RWUG6-nzDZd2g/viewform" target="_blank">Tilmeld dig her →</a>
+      </div>
+
+      <div class="payment-info">
+        <p><strong>Betaling:</strong></p>
+        <p>Reg. <strong>7320</strong> · Konto <strong>0002274236</strong></p>
+        <p style="margin-top:0.5rem; opacity:0.7; font-size:0.85rem;">Race-fee tilbagebetales ved aflysning pga. vejr. Kontingent tilbagebetales ikke.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="LOGO_transparent.png" alt="LOTW">
+  <p>Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026</p>
+  <p style="margin-top:0.4rem;">lordofthewingsdk@gmail.com</p>
+</footer>
+
+</body>
+</html>
