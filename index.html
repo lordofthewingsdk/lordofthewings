@@ -764,6 +764,8 @@
   };
 
   // Formular-logik
+  let selectedTypeKey = '';
+
   function hide(...ids) { ids.forEach(id => document.getElementById(id).style.display = 'none'); }
   function show(...ids) { ids.forEach(id => document.getElementById(id).style.display = ''); }
 
@@ -772,9 +774,9 @@
     hide('result-ja', 'q2', 'result-vil-ja', 'result-vil-nej', 'submitBtn');
     document.querySelectorAll('input[name="vil_medlem"]').forEach(r => r.checked = false);
     document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-    document.getElementById('typeHidden').value = '';
+    selectedTypeKey = '';
     if (val === 'ja') {
-      document.getElementById('typeHidden').value = typeText['member-race'][lang];
+      selectedTypeKey = 'member-race';
       show('result-ja', 'submitBtn');
     } else if (val === 'nej') {
       show('q2');
@@ -785,11 +787,11 @@
     const val = document.querySelector('input[name="vil_medlem"]:checked')?.value;
     hide('result-vil-ja', 'result-vil-nej', 'submitBtn');
     document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-    document.getElementById('typeHidden').value = '';
+    selectedTypeKey = '';
     if (val === 'ja') {
       show('result-vil-ja');
     } else if (val === 'nej') {
-      document.getElementById('typeHidden').value = typeText['race-only'][lang];
+      selectedTypeKey = 'race-only';
       show('result-vil-nej', 'submitBtn');
     }
   }
@@ -797,7 +799,7 @@
   function selectOption(card, key) {
     document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
-    document.getElementById('typeHidden').value = typeText[key][lang];
+    selectedTypeKey = key;
     show('submitBtn');
   }
 
@@ -805,7 +807,7 @@
   const form = document.getElementById('tilmeldingForm');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!document.getElementById('typeHidden').value) return;
+    if (!selectedTypeKey) return;
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = '…';
@@ -815,7 +817,7 @@
         'navn':      document.getElementById('navn').value,
         'email':     document.getElementById('email').value,
         'telefon':   document.getElementById('telefon').value,
-        'type':      document.getElementById('typeHidden').value,
+        'type':      typeText[selectedTypeKey][lang],
         'sprog':     document.getElementById('sprogHidden').value,
       }).toString();
       await fetch('/', {
