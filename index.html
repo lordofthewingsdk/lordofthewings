@@ -660,6 +660,7 @@
       <form id="tilmeldingForm" name="tilmelding" method="POST" netlify netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="tilmelding">
         <input type="hidden" name="type" id="typeHidden">
+        <input type="hidden" name="sprog" id="sprogHidden" value="da">
         <p style="display:none"><input name="bot-field"></p>
 
         <div class="form-group">
@@ -750,6 +751,8 @@
     document.querySelectorAll('[data-da]').forEach(el => {
       el.innerHTML = el.getAttribute('data-' + lang);
     });
+    const sprogField = document.getElementById('sprogHidden');
+    if (sprogField) sprogField.value = lang;
   }
 
   // Formular-logik
@@ -799,10 +802,18 @@
     btn.disabled = true;
     btn.textContent = '…';
     try {
+      const body = new URLSearchParams({
+        'form-name': 'tilmelding',
+        'navn':      document.getElementById('navn').value,
+        'email':     document.getElementById('email').value,
+        'telefon':   document.getElementById('telefon').value,
+        'type':      document.getElementById('typeHidden').value,
+        'sprog':     document.getElementById('sprogHidden').value,
+      }).toString();
       await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
+        body
       });
       form.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
