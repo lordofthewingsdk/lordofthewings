@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Races – Lord of the Wings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="display:flex; align-items:center; gap:1rem;">
+    <a href="index.html"><img class="nav-logo" src="LOGO_transparent.png" alt="Lord of the Wings logo"></a>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ENGLISH</button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" data-da="Forside" data-en="Home">Forside</a></li>
+    <li><a href="om-os.html" data-da="Om os" data-en="About">Om os</a></li>
+    <li><a href="races.html">Races</a></li>
+    <li><a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a></li>
+    <li><a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <p class="section-label" data-da="Sæson 2026" data-en="Season 2026">Sæson 2026</p>
+    <h1 class="section-title" data-da="Årets races" data-en="This year's races">Årets races</h1>
+  </div>
+</div>
+
+<!-- RACES -->
+<section class="races">
+  <div class="container">
+    <div class="race-list">
+
+      <div class="race-item">
+        <div>
+          <div class="race-date">24–25</div>
+          <div class="race-month" data-da="Maj" data-en="May">Maj</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #1 – Ebeltoft Bugt</h3>
+          <p data-da="Downwind course + rundbane · Surfline udstyrsdemo" data-en="Downwind course + lap race · Surfline gear demo">Downwind course + rundbane · Surfline udstyrsdemo</p>
+        </div>
+        <div class="race-badge" data-da="Afholdt" data-en="Completed">Afholdt</div>
+      </div>
+
+      <div class="race-item">
+        <div>
+          <div class="race-date">20–21</div>
+          <div class="race-month" data-da="Juni" data-en="June">Juni</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #2 – Ebeltoft Bugt</h3>
+          <p data-da="Program kommer" data-en="Programme coming soon">Program kommer</p>
+        </div>
+        <div class="race-badge next" data-da="Næste race!" data-en="Next race!">Næste race!</div>
+      </div>
+
+      <div class="race-item">
+        <div>
+          <div class="race-date">Sept.</div>
+          <div class="race-month">2026</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #3 – TBA</h3>
+          <p data-da="Dato annonceres snarest" data-en="Date to be announced">Dato annonceres snarest</p>
+        </div>
+        <div class="race-badge" data-da="Kommende" data-en="Upcoming">Kommende</div>
+      </div>
+
+      <div class="race-item">
+        <div>
+          <div class="race-date">Okt.</div>
+          <div class="race-month">2026</div>
+        </div>
+        <div class="race-info">
+          <h3>Race #4 – TBA</h3>
+          <p data-da="Sæsonafslutning · Dato annonceres snarest" data-en="Season finale · Date to be announced">Sæsonafslutning · Dato annonceres snarest</p>
+        </div>
+        <div class="race-badge" data-da="Kommende" data-en="Upcoming">Kommende</div>
+      </div>
+
+    </div>
+    <p style="margin-top:2rem; font-size:0.85rem; opacity:0.55;" data-da="Konkret tidsplan for hvert event annonceres når vejrudsigten er klar." data-en="Detailed schedule for each event will be announced when the weather forecast is ready.">Konkret tidsplan for hvert event annonceres når vejrudsigten er klar.</p>
+  </div>
+</section>
+
+<!-- PROGRAM RACE #1 -->
+<section style="background:var(--navy-dark); padding:5rem 2rem;">
+  <div class="container">
+    <p class="section-label" data-da="Program · Afholdt" data-en="Programme · Completed">Program · Afholdt</p>
+    <h2 class="section-title" data-da="Race #1 · 24–25 Maj" data-en="Race #1 · 24–25 May">Race #1 · 24–25 Maj</h2>
+    <div class="divider"></div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-top:1.5rem;">
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Check-in</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Velkomst &amp; briefing · Tidsplan offentliggøres nærmere eventet" data-en="Welcome &amp; briefing · Schedule published closer to the event">Velkomst &amp; briefing · Tidsplan offentliggøres nærmere eventet</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Race 1</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;">Downwind course</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;" data-da="Pause" data-en="Break">Pause</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Sodvand, øl &amp; pølser · Surfline udstyrsdemo" data-en="Soft drinks, beer &amp; hot dogs · Surfline gear demo">Sodvand, øl &amp; pølser · Surfline udstyrsdemo</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Race 2</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Bane med runder" data-en="Lap course">Bane med runder</div>
+      </div>
+      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
+        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;" data-da="Afslutning" data-en="Finish">Afslutning</div>
+        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Præmier &amp; fælles fejring" data-en="Prizes &amp; celebration">Præmier &amp; fælles fejring</div>
+      </div>
+    </div>
+    <p style="margin-top:2rem; font-size:0.9rem; opacity:0.65;" data-da="Alle niveauer er velkomne 🤙" data-en="All levels welcome 🤙">Alle niveauer er velkomne 🤙</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--navy); padding:4rem 2rem; text-align:center;">
+  <div class="container">
+    <p class="section-label" data-da="Klar til at deltage?" data-en="Ready to join?">Klar til at deltage?</p>
+    <h2 class="section-title" data-da="Tilmeld dig Race #2" data-en="Sign up for Race #2">Tilmeld dig Race #2</h2>
+    <div class="divider" style="margin:0 auto 2rem;"></div>
+    <a class="btn btn-solid" href="tilmelding.html" data-da="Tilmeld dig nu →" data-en="Sign up now →">Tilmeld dig nu →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="LOGO_transparent.png" alt="LOTW">
+  <div class="footer-links">
+    <a href="om-os.html" data-da="Om os" data-en="About">Om os</a>
+    <a href="races.html">Races</a>
+    <a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a>
+    <a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a>
+    <a href="https://www.facebook.com/profile.php?id=61580798024798" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/lordofthewings_dk" target="_blank">Instagram</a>
+  </div>
+  <p data-da="Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026" data-en="Lord of the Wings · Ebeltoft, Denmark · Founded March 2026">Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026</p>
+  <p style="margin-top:0.4rem;">lordofthewingsdk@gmail.com</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

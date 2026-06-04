@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tilmelding – Lord of the Wings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="display:flex; align-items:center; gap:1rem;">
+    <a href="index.html"><img class="nav-logo" src="LOGO_transparent.png" alt="Lord of the Wings logo"></a>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ENGLISH</button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" data-da="Forside" data-en="Home">Forside</a></li>
+    <li><a href="om-os.html" data-da="Om os" data-en="About">Om os</a></li>
+    <li><a href="races.html">Races</a></li>
+    <li><a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a></li>
+    <li><a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a></li>
+  </ul>
+</nav>
+
+<!-- TILMELDING -->
+<section class="signup" id="tilmeld" style="background:var(--navy);">
+  <div class="container">
+    <p class="section-label" data-da="Tilmelding" data-en="Sign up">Tilmelding</p>
+    <h2 class="section-title" data-da="Kom med på vandet" data-en="Join us on the water">Kom med på vandet</h2>
+    <div class="divider"></div>
+
+    <div class="signup-layout">
+    <div class="signup-box">
+
+      <div class="form-success" id="formSuccess">
+        <h3 data-da="Tak for din tilmelding!" data-en="Thanks for signing up!">Tak for din tilmelding!</h3>
+        <p data-da="Vi har sendt en bekræftelse til din e-mailadresse." data-en="We've sent a confirmation to your email address." style="opacity:0.8;">Vi har sendt en bekræftelse til din e-mailadresse.</p>
+      </div>
+
+      <form id="tilmeldingForm" name="tilmelding" method="POST" netlify netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="tilmelding">
+        <input type="hidden" name="type" id="typeHidden">
+        <input type="hidden" name="sprog" id="sprogHidden" value="da">
+        <p style="display:none"><input name="bot-field"></p>
+
+        <div class="form-group">
+          <label for="navn" data-da="NAVN" data-en="NAME">NAVN</label>
+          <input type="text" id="navn" name="navn" placeholder="Dit fulde navn" required>
+        </div>
+        <div class="form-group">
+          <label for="email" data-da="E-MAIL" data-en="EMAIL">E-MAIL</label>
+          <input type="email" id="email" name="email" placeholder="din@email.dk" required>
+        </div>
+        <div class="form-group">
+          <label for="telefon" data-da="TELEFON" data-en="PHONE">TELEFON</label>
+          <input type="tel" id="telefon" name="telefon" placeholder="+45 00 00 00 00" required>
+        </div>
+
+        <!-- Spørgsmål 1 -->
+        <div class="form-group" id="q1">
+          <label data-da="ER DU ALLEREDE MEDLEM?" data-en="ARE YOU ALREADY A MEMBER?">ER DU ALLEREDE MEDLEM?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="er_medlem" value="ja" onchange="handleMedlem()"><span class="radio-box"></span> <span data-da="Ja" data-en="Yes">Ja</span></label>
+            <label><input type="radio" name="er_medlem" value="nej" onchange="handleMedlem()"><span class="radio-box"></span> <span data-da="Nej" data-en="No">Nej</span></label>
+          </div>
+        </div>
+
+        <!-- Svar: allerede medlem → vis pris direkte -->
+        <div id="result-ja" style="display:none;">
+          <div class="price-display">
+            <div class="price-display-title" data-da="Race 20.06–21.06 tilmelding" data-en="Race 20.06–21.06 registration">Race 20.06–21.06 tilmelding</div>
+            <div class="price-display-amount">100 kr.</div>
+          </div>
+        </div>
+
+        <!-- Spørgsmål 2 (kun hvis ikke-medlem) -->
+        <div class="form-group" id="q2" style="display:none;">
+          <label data-da="ØNSKER DU AT BLIVE MEDLEM?" data-en="WOULD YOU LIKE TO BECOME A MEMBER?">ØNSKER DU AT BLIVE MEDLEM?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="vil_medlem" value="ja" onchange="handleVilMedlem()"><span class="radio-box"></span> <span data-da="Ja" data-en="Yes">Ja</span></label>
+            <label><input type="radio" name="vil_medlem" value="nej" onchange="handleVilMedlem()"><span class="radio-box"></span> <span data-da="Nej" data-en="No">Nej</span></label>
+          </div>
+        </div>
+
+        <!-- Svar: vil blive medlem → to valgmuligheder -->
+        <div id="result-vil-ja" style="display:none;">
+          <label class="option-card" id="card-kun-medlem" onclick="selectOption(this, 'membership-only')">
+            <input type="radio" name="valg" value="Kun medlemskab - 150 kr.">
+            <div class="option-card-label">
+              <div class="option-card-title" data-da="Kun medlemskab" data-en="Membership only">Kun medlemskab</div>
+              <div class="option-card-price">150 kr.</div>
+            </div>
+          </label>
+          <label class="option-card" id="card-med-race" onclick="selectOption(this, 'membership-race')">
+            <input type="radio" name="valg" value="Medlemskab og race 20.06-21.06 - 250 kr.">
+            <div class="option-card-label">
+              <div class="option-card-title" data-da="Medlemskab og race 20.06–21.06" data-en="Membership and race 20.06–21.06">Medlemskab og race 20.06–21.06</div>
+              <div class="option-card-price">250 kr.</div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Svar: vil ikke blive medlem → vis pris direkte -->
+        <div id="result-vil-nej" style="display:none;">
+          <div class="price-display">
+            <div class="price-display-title" data-da="Race 20.06–21.06 tilmelding uden medlemskab" data-en="Race 20.06–21.06 registration without membership">Race 20.06–21.06 tilmelding uden medlemskab</div>
+            <div class="price-display-amount">200 kr.</div>
+          </div>
+        </div>
+
+        <p id="paymentNote" style="display:none; margin-top:1.5rem; font-size:0.88rem; opacity:0.7;" data-da="Du modtager en bekræftelsesmail med betalingsinformation." data-en="You will receive a confirmation email with payment details.">Du modtager en bekræftelsesmail med betalingsinformation.</p>
+        <button type="submit" id="submitBtn" class="btn btn-solid" style="width:100%; margin-top:0.75rem; display:none;" data-da="Send tilmelding" data-en="Submit registration">Send tilmelding</button>
+      </form>
+
+    </div><!-- /.signup-box -->
+
+    <!-- PRISOVERSIGT -->
+    <aside class="price-sidebar">
+      <h3 data-da="Prisoversigt" data-en="Price overview">Prisoversigt</h3>
+
+      <div class="price-row">
+        <div class="price-row-label">
+          <span data-da="Sæsonmedlemskab" data-en="Season membership">Sæsonmedlemskab</span>
+          <small data-da="Inkl. LOTW lycra t-shirt" data-en="Incl. LOTW lycra t-shirt">Inkl. LOTW lycra t-shirt</small>
+        </div>
+        <div class="price-row-amount">150 kr</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-row-label">
+          <span data-da="Race-fee (medlem)" data-en="Race fee (member)">Race-fee (medlem)</span>
+          <small data-da="Pr. event" data-en="Per event">Pr. event</small>
+        </div>
+        <div class="price-row-amount">100 kr</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-row-label">
+          <span data-da="Medlemskab + race" data-en="Membership + race">Medlemskab + race</span>
+          <small data-da="Samlet pris" data-en="Combined price">Samlet pris</small>
+        </div>
+        <div class="price-row-amount">250 kr</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-row-label">
+          <span data-da="Race uden medlemskab" data-en="Race without membership">Race uden medlemskab</span>
+          <small data-da="Pr. event" data-en="Per event">Pr. event</small>
+        </div>
+        <div class="price-row-amount">200 kr</div>
+      </div>
+
+      <p class="price-note" data-da="Kontingent tilbagebetales ikke. Race-fee tilbagebetales ved aflysning." data-en="Membership fee is non-refundable. Race fee is refunded in case of cancellation.">Kontingent tilbagebetales ikke. Race-fee tilbagebetales ved aflysning.</p>
+    </aside>
+
+    </div><!-- /.signup-layout -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="LOGO_transparent.png" alt="LOTW">
+  <div class="footer-links">
+    <a href="om-os.html" data-da="Om os" data-en="About">Om os</a>
+    <a href="races.html">Races</a>
+    <a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a>
+    <a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a>
+    <a href="https://www.facebook.com/profile.php?id=61580798024798" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/lordofthewings_dk" target="_blank">Instagram</a>
+  </div>
+  <p data-da="Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026" data-en="Lord of the Wings · Ebeltoft, Denmark · Founded March 2026">Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026</p>
+  <p style="margin-top:0.4rem;">lordofthewingsdk@gmail.com</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // ── Tilmelding form logic ─────────────────────────────────────────────────
+  const typeText = {
+    'member-race':     { da: 'Race 20.06-21.06 tilmelding - 100 kr.',                   en: 'Race 20.06-21.06 registration - 100 kr.' },
+    'membership-only': { da: 'Kun medlemskab - 150 kr.',                                 en: 'Membership only - 150 kr.' },
+    'membership-race': { da: 'Medlemskab og race 20.06-21.06 - 250 kr.',                 en: 'Membership and race 20.06-21.06 - 250 kr.' },
+    'race-only':       { da: 'Race 20.06-21.06 tilmelding uden medlemskab - 200 kr.',    en: 'Race 20.06-21.06 registration without membership - 200 kr.' },
+  };
+
+  let selectedTypeKey = '';
+
+  function hide(...ids) { ids.forEach(id => document.getElementById(id).style.display = 'none'); }
+  function show(...ids) { ids.forEach(id => document.getElementById(id).style.display = ''); }
+
+  function handleMedlem() {
+    const val = document.querySelector('input[name="er_medlem"]:checked')?.value;
+    hide('result-ja', 'q2', 'result-vil-ja', 'result-vil-nej', 'paymentNote', 'submitBtn');
+    document.querySelectorAll('input[name="vil_medlem"]').forEach(r => r.checked = false);
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    selectedTypeKey = '';
+    if (val === 'ja') {
+      selectedTypeKey = 'member-race';
+      show('result-ja', 'paymentNote', 'submitBtn');
+    } else if (val === 'nej') {
+      show('q2');
+    }
+  }
+
+  function handleVilMedlem() {
+    const val = document.querySelector('input[name="vil_medlem"]:checked')?.value;
+    hide('result-vil-ja', 'result-vil-nej', 'paymentNote', 'submitBtn');
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    selectedTypeKey = '';
+    if (val === 'ja') {
+      show('result-vil-ja');
+    } else if (val === 'nej') {
+      selectedTypeKey = 'race-only';
+      show('result-vil-nej', 'paymentNote', 'submitBtn');
+    }
+  }
+
+  function selectOption(card, key) {
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedTypeKey = key;
+    show('paymentNote', 'submitBtn');
+  }
+
+  // Netlify Forms – AJAX indsendelse
+  const form = document.getElementById('tilmeldingForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!selectedTypeKey) return;
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '…';
+    try {
+      const body = new URLSearchParams({
+        'form-name': 'tilmelding',
+        'navn':      document.getElementById('navn').value,
+        'email':     document.getElementById('email').value,
+        'telefon':   document.getElementById('telefon').value,
+        'type':      typeText[selectedTypeKey][lang],
+        'sprog':     document.getElementById('sprogHidden').value,
+      }).toString();
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body
+      });
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } catch {
+      btn.disabled = false;
+      btn.textContent = lang === 'da' ? 'Send tilmelding' : 'Submit registration';
+      alert(lang === 'da' ? 'Noget gik galt – prøv igen.' : 'Something went wrong – please try again.');
+    }
+  });
+</script>
+</body>
+</html>

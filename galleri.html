@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galleri – Lord of the Wings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="display:flex; align-items:center; gap:1rem;">
+    <a href="index.html"><img class="nav-logo" src="LOGO_transparent.png" alt="Lord of the Wings logo"></a>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ENGLISH</button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" data-da="Forside" data-en="Home">Forside</a></li>
+    <li><a href="om-os.html" data-da="Om os" data-en="About">Om os</a></li>
+    <li><a href="races.html">Races</a></li>
+    <li><a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a></li>
+    <li><a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <p class="section-label" data-da="Fotos &amp; video" data-en="Photos &amp; video">Fotos &amp; video</p>
+    <h1 class="section-title" data-da="Galleri" data-en="Gallery">Galleri</h1>
+  </div>
+</div>
+
+<!-- SEKTION: RACE #1 -->
+<section class="gallery-section">
+  <div class="container">
+    <p class="section-label">Race #1</p>
+    <h2 class="section-title">25. maj 2026</h2>
+    <div class="divider"></div>
+
+    <div class="gallery-race-layout">
+
+      <!-- Video: Race dag (højkant) -->
+      <div class="gallery-item portrait">
+        <video controls preload="none" poster="Videoer/thumb_race.png">
+          <source src="Videoer/Race 25.05.26.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 4 fotos i 2×2 grid + kredit -->
+      <div>
+        <div class="gallery-2x2">
+          <div class="gallery-item">
+            <img src="Billeder/25.05.26/1.jpg" alt="Race #1 foto 1" loading="lazy">
+          </div>
+          <div class="gallery-item">
+            <img src="Billeder/25.05.26/2.jpg" alt="Race #1 foto 2" loading="lazy">
+          </div>
+          <div class="gallery-item">
+            <img src="Billeder/25.05.26/3.jpg" alt="Race #1 foto 3" loading="lazy">
+          </div>
+          <div class="gallery-item">
+            <img src="Billeder/25.05.26/4.jpg" alt="Race #1 foto 4" loading="lazy">
+          </div>
+        </div>
+        <p style="margin-top:0.75rem; font-size:0.82rem; opacity:0.45;">Tak til Peter Frank for billeder · 25. maj 2026</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SEKTION: OKTOBER 2025 -->
+<section class="gallery-section" style="background:var(--navy);">
+  <div class="container">
+    <p class="section-label" data-da="Inden foreningen" data-en="Before the association">Inden foreningen</p>
+    <h2 class="section-title">Oktober 2025</h2>
+    <div class="divider"></div>
+
+    <div class="gallery-grid">
+
+      <!-- Video: LOTW 2025 -->
+      <div class="gallery-item wide">
+        <video controls preload="none" poster="Videoer/thumb_lotw2025.png">
+          <source src="Videoer/LOTW 2025 small.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Video: Reel -->
+      <div class="gallery-item portrait">
+        <video controls preload="none" poster="Videoer/thumb_reel.png">
+          <source src="Videoer/Reel.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- 21 billeder fra 2025 -->
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.20.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.20.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.21.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.21.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.22.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.22.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.22.3.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.23.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.26.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.26.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.26.3.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.29.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.29.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.31.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.31.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.32.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.32.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.32.3.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.34.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_1.35.1.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_2.2.1 (1).png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_2.2.2.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_2.2.3.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_2.2.4.png" alt="Oktober 2025" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="Billeder/2025/Still 2026-03-10 103544_2.2.5 (1).png" alt="Oktober 2025" loading="lazy">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo" src="LOGO_transparent.png" alt="LOTW">
+  <div class="footer-links">
+    <a href="om-os.html" data-da="Om os" data-en="About">Om os</a>
+    <a href="races.html">Races</a>
+    <a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a>
+    <a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a>
+    <a href="https://www.facebook.com/profile.php?id=61580798024798" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/lordofthewings_dk" target="_blank">Instagram</a>
+  </div>
+  <p data-da="Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026" data-en="Lord of the Wings · Ebeltoft, Denmark · Founded March 2026">Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026</p>
+  <p style="margin-top:0.4rem;">lordofthewingsdk@gmail.com</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <button class="lb-close" id="lb-close">✕</button>
+  <button class="lb-prev" id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-next" id="lb-next">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const images = Array.from(document.querySelectorAll('.gallery-item img'));
+  let current = 0;
+
+  const lb       = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lb-img');
+  const lbCount  = document.getElementById('lb-counter');
+
+  function openLightbox(index) {
+    current = index;
+    lbImg.src = images[current].src;
+    lbImg.alt = images[current].alt;
+    lbCount.textContent = (current + 1) + ' / ' + images.length;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('active');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  function showPrev() {
+    current = (current - 1 + images.length) % images.length;
+    lbImg.src = images[current].src;
+    lbCount.textContent = (current + 1) + ' / ' + images.length;
+  }
+
+  function showNext() {
+    current = (current + 1) % images.length;
+    lbImg.src = images[current].src;
+    lbCount.textContent = (current + 1) + ' / ' + images.length;
+  }
+
+  // Klik på billede åbner lightbox
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => openLightbox(i));
+  });
+
+  // Knapper
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', showPrev);
+  document.getElementById('lb-next').addEventListener('click', showNext);
+
+  // Klik på baggrund lukker
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+
+  // Tastatur
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft')  showPrev();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'Escape')     closeLightbox();
+  });
+</script>
+</body>
+</html>

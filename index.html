@@ -4,454 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lord of the Wings – Wingfoil Event, Ebeltoft</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap');
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #1a2744;
-      --navy-dark: #0f1a30;
-      --cream: #f5f0e8;
-      --cream-dark: #e8e0cf;
-      --gold: #c8a96e;
-      --white: #ffffff;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--navy-dark);
-      color: var(--cream);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    /* LANG TOGGLE */
-    .lang-toggle {
-      background: transparent;
-      border: 1px solid rgba(200,169,110,0.6);
-      color: var(--gold);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      padding: 0.3rem 0.8rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-    .lang-toggle:hover { background: var(--gold); color: var(--navy-dark); }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 3rem;
-      background: rgba(10, 15, 28, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(200, 169, 110, 0.2);
-    }
-    .nav-logo { width: 52px; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: var(--cream);
-      text-decoration: none;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1rem;
-      letter-spacing: 0.12em;
-      opacity: 0.8;
-      transition: opacity 0.2s, color 0.2s;
-    }
-    .nav-links a:hover { opacity: 1; color: var(--gold); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 7rem 2rem 4rem;
-      background: var(--navy-dark);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      opacity: 0.65;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(10, 15, 28, 0.55);
-      z-index: 1;
-    }
-    .hero > *:not(.hero-video):not(.hero-overlay) { position: relative; z-index: 2; }
-
-    .hero-logo {
-      width: 440px;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 8vw, 7rem);
-      letter-spacing: 0.08em;
-      line-height: 1;
-      color: var(--cream);
-
-    }
-    .hero-sub {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.1rem, 3vw, 1.8rem);
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      margin: 0.6rem 0 2rem;
-      text-transform: uppercase;
-    }
-    .hero-desc {
-      max-width: 600px;
-      font-size: 1.05rem;
-      opacity: 0.8;
-      margin-bottom: 2.5rem;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 2.5rem;
-      background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.2em;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.25s, color 0.25s;
-    }
-    .btn:hover { background: var(--gold); color: var(--navy-dark); }
-    .btn-solid {
-      background: var(--gold);
-      color: var(--navy-dark);
-    }
-    .btn-solid:hover { background: var(--cream); border-color: var(--cream); }
-
-    /* SECTIONS */
-    section { padding: 5rem 2rem; }
-    .container { max-width: 1000px; margin: 0 auto; }
-    .section-label {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.35em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      letter-spacing: 0.06em;
-      color: var(--cream);
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-    .divider {
-      width: 60px;
-      height: 2px;
-      background: var(--gold);
-      margin-bottom: 2rem;
-    }
-
-    /* OM FORENINGEN */
-    .about { background: var(--navy); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .about-text p { opacity: 0.8; margin-bottom: 1rem; }
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .stat-card {
-      background: var(--navy-dark);
-      border: 1px solid rgba(200,169,110,0.25);
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .stat-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.8rem;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .stat-label { font-size: 0.8rem; letter-spacing: 0.15em; opacity: 0.6; text-transform: uppercase; margin-top: 0.3rem; }
-
-    /* MEMBERSHIP */
-    .membership { background: var(--navy-dark); }
-    .membership-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .card {
-      background: var(--navy);
-      border: 1px solid rgba(200,169,110,0.2);
-      padding: 2.5rem 2rem;
-      position: relative;
-      transition: border-color 0.25s;
-    }
-    .card:hover { border-color: var(--gold); }
-    .card.featured {
-      border-color: var(--gold);
-    }
-    .card-badge {
-      position: absolute;
-      top: -1px; right: 2rem;
-      background: var(--gold);
-      color: var(--navy-dark);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      padding: 0.25rem 0.8rem;
-    }
-    .card-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      letter-spacing: 0.1em;
-      color: var(--cream);
-      margin-bottom: 0.5rem;
-    }
-    .card-price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.5rem;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-    .card-price span { font-size: 1rem; opacity: 0.7; }
-    .card ul { list-style: none; }
-    .card ul li {
-      padding: 0.4rem 0;
-      border-bottom: 1px solid rgba(245,240,232,0.08);
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    .card ul li::before { content: '—  '; color: var(--gold); }
-
-    /* RACES */
-    .races { background: var(--navy); }
-    .race-list { margin-top: 2rem; }
-    .race-item {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid rgba(245,240,232,0.08);
-    }
-    .race-date {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      color: var(--gold);
-      min-width: 80px;
-      line-height: 1;
-    }
-    .race-month {
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      opacity: 0.7;
-      text-transform: uppercase;
-    }
-    .race-info h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.08em;
-      color: var(--cream);
-    }
-    .race-info p { font-size: 0.88rem; opacity: 0.7; margin-top: 0.2rem; }
-    .race-badge {
-      margin-left: auto;
-      padding: 0.3rem 0.9rem;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-    }
-    .race-badge.next { background: var(--gold); color: var(--navy-dark); }
-
-    /* TILMELDING */
-    .signup { background: var(--navy-dark); }
-    .signup-box {
-      background: var(--navy);
-      border: 1px solid rgba(200,169,110,0.3);
-      padding: 3rem;
-      max-width: 680px;
-    }
-
-    /* FORM */
-    .form-group { margin-bottom: 1.5rem; }
-    .form-group label {
-      display: block;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      background: var(--navy-dark);
-      border: 1px solid rgba(200,169,110,0.35);
-      color: var(--cream);
-      font-family: 'Barlow', sans-serif;
-      font-size: 1rem;
-      padding: 0.75rem 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus { border-color: var(--gold); }
-    .form-group input::placeholder { opacity: 0.4; }
-    .form-group select option { background: var(--navy-dark); }
-    .form-group .select-wrap { position: relative; }
-    .form-group .select-wrap::after {
-      content: '▾';
-      position: absolute;
-      right: 1rem; top: 50%;
-      transform: translateY(-50%);
-      color: var(--gold);
-      pointer-events: none;
-    }
-    .radio-group { display: flex; gap: 1rem; margin-top: 0.5rem; }
-    .radio-group label {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      cursor: pointer;
-      font-family: 'Barlow', sans-serif;
-      font-size: 0.95rem;
-      opacity: 0.85;
-      user-select: none;
-    }
-    .radio-group input[type="radio"] { display: none; }
-    .radio-box {
-      width: 22px; height: 22px;
-      border: 2px solid rgba(200,169,110,0.45);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.15s;
-      font-size: 14px;
-      color: var(--gold);
-    }
-    .radio-group input[type="radio"]:checked + .radio-box {
-      border-color: var(--gold);
-    }
-    .radio-group input[type="radio"]:checked + .radio-box::after {
-      content: '✓';
-    }
-    .option-card {
-      border: 1px solid rgba(200,169,110,0.25);
-      padding: 1rem 1.25rem;
-      cursor: pointer;
-      margin-top: 0.75rem;
-      transition: border-color 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .option-card:hover { border-color: var(--gold); }
-    .option-card input[type="radio"] { accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
-    .option-card-label { flex: 1; }
-    .option-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.08em; color: var(--cream); }
-    .option-card-price { font-size: 0.85rem; color: var(--gold); margin-top: 0.1rem; }
-    .option-card.selected { border-color: var(--gold); background: rgba(200,169,110,0.06); }
-    .price-display {
-      border-left: 3px solid var(--gold);
-      padding: 0.75rem 1.25rem;
-      background: var(--navy-dark);
-      margin-top: 0.75rem;
-    }
-    .price-display-title { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.08em; color: var(--cream); }
-    .price-display-amount { font-size: 0.85rem; color: var(--gold); margin-top: 0.1rem; }
-
-    .form-success {
-      display: none;
-      padding: 2rem;
-      border-left: 3px solid var(--gold);
-      background: var(--navy-dark);
-    }
-    .form-success h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .payment-info {
-      background: var(--navy-dark);
-      border-left: 3px solid var(--gold);
-      padding: 1rem 1.5rem;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-    }
-    .payment-info strong { color: var(--gold); }
-    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-
-    /* FOOTER */
-    footer {
-      background: #070d1a;
-      border-top: 1px solid rgba(200,169,110,0.15);
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .footer-logo { width: 70px; margin-bottom: 1rem; opacity: 0.7; }
-    footer p { font-size: 0.85rem; opacity: 0.45; }
-
-    /* WAVE SEPARATOR */
-    .wave { display: block; width: 100%; }
-
-    @media (max-width: 700px) {
-      nav { padding: 0.8rem 1.2rem; }
-      .nav-links { gap: 1.2rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .signup-box { padding: 2rem 1.5rem; }
-      .race-item { flex-wrap: wrap; }
-      .race-badge { margin-left: 0; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <div style="display:flex; align-items:center; gap:1rem;">
-    <img class="nav-logo" src="LOGO_transparent.png" alt="Lord of the Wings logo">
+    <a href="index.html"><img class="nav-logo" src="LOGO_transparent.png" alt="Lord of the Wings logo"></a>
     <button class="lang-toggle" id="langToggle" onclick="toggleLang()">ENGLISH</button>
   </div>
   <ul class="nav-links">
-    <li><a href="#om" data-da="Om os" data-en="About">Om os</a></li>
-    <li><a href="#kontingent" data-da="Kontingent" data-en="Membership">Kontingent</a></li>
-    <li><a href="#races">Races</a></li>
-    <li><a href="#tilmeld" data-da="Tilmeld" data-en="Sign up">Tilmeld</a></li>
+    <li><a href="index.html" data-da="Forside" data-en="Home">Forside</a></li>
+    <li><a href="om-os.html" data-da="Om os" data-en="About">Om os</a></li>
+    <li><a href="races.html">Races</a></li>
+    <li><a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a></li>
+    <li><a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a></li>
   </ul>
 </nav>
 
@@ -463,168 +31,47 @@
   <div class="hero-overlay"></div>
   <img class="hero-logo" src="LOGO_transparent.png" alt="Lord of the Wings">
   <h1>Lord of the Wings</h1>
-  <p class="hero-sub" data-da="Wingfoil Event · Ebeltoft · Danmark" data-en="Wingfoil Event · Ebeltoft · Denmark">Wingfoil Event · Ebeltoft · Danmark</p>
+  <p class="hero-sub" data-da="Wingfoil Racing · Ebeltoft · Danmark" data-en="Wingfoil Racing · Ebeltoft · Denmark">Wingfoil Racing · Ebeltoft · Danmark</p>
   <p class="hero-desc" data-da="En frivillig forening for dem, der lever og ånder for wingfoiling. Vi afholder races og events for amatører – alle niveauer velkomne." data-en="A volunteer association for those who live and breathe wingfoiling. We host races and events for amateurs – all levels welcome.">En frivillig forening for dem, der lever og ånder for wingfoiling. Vi afholder races og events for amatører – alle niveauer velkomne.</p>
-  <a class="btn btn-solid" href="#tilmeld" data-da="Tilmeld dig nu" data-en="Sign up now">Tilmeld dig nu</a>
-</section>
-
-<!-- OM FORENINGEN -->
-<section class="about" id="om">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-text">
-        <p class="section-label" data-da="Om foreningen" data-en="About us">Om foreningen</p>
-        <h2 class="section-title" data-da="Skabt af wingfoilere,<br>for wingfoilere" data-en="Created by wingfoilers,<br>for wingfoilers">Skabt af wingfoilere,<br>for wingfoilere</h2>
-        <div class="divider"></div>
-        <p data-da="Lord of the Wings er en frivillig forening stiftet i marts 2026 med base i Ebeltoft. Vi samler wingfoilere på alle niveauer til races og pop-up events i smukke danske farvande." data-en="Lord of the Wings is a volunteer association founded in March 2026, based in Ebeltoft. We bring together wingfoilers of all levels for races and pop-up events in beautiful Danish waters.">Lord of the Wings er en frivillig forening stiftet i marts 2026 med base i Ebeltoft. Vi samler wingfoilere på alle niveauer til races og pop-up events i smukke danske farvande.</p>
-        <p data-da="Vores mission er simpel: at bygge et stærkt, lokalt fællesskab omkring en af verdens hurtigst voksende vandsportsgrene – og have det sjovt undervejs." data-en="Our mission is simple: to build a strong, local community around one of the world's fastest-growing water sports – and have fun along the way.">Vores mission er simpel: at bygge et stærkt, lokalt fællesskab omkring en af verdens hurtigst voksende vandsportsgrene – og have det sjovt undervejs.</p>
-        <p style="margin-top:1.5rem">
-          <a class="btn" href="#races" data-da="Se årets races →" data-en="See this year's races →">Se årets races →</a>
-        </p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-number">4</div>
-          <div class="stat-label" data-da="Planlagte races" data-en="Planned races">Planlagte races</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">2026</div>
-          <div class="stat-label" data-da="Stiftet" data-en="Founded">Stiftet</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">150 kr</div>
-          <div class="stat-label" data-da="Sæsonkontingent" data-en="Season membership">Sæsonkontingent</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">∞</div>
-          <div class="stat-label" data-da="Havudsigt" data-en="Ocean view">Havudsigt</div>
-        </div>
-      </div>
-    </div>
+  <div class="hero-btns">
+    <a class="btn btn-solid" href="tilmelding.html" data-da="Tilmeld dig nu" data-en="Sign up now">Tilmeld dig nu</a>
+    <a class="btn" href="races.html" data-da="Se årets races" data-en="See this year's races">Se årets races</a>
   </div>
 </section>
 
-<!-- KONTINGENT -->
-<section class="membership" id="kontingent">
+<!-- QUICK LINKS -->
+<section class="quick-links">
   <div class="container">
-    <p class="section-label" data-da="Bliv medlem" data-en="Become a member">Bliv medlem</p>
-    <h2 class="section-title" data-da="Hvad er med i pakken?" data-en="What's included?">Hvad er med i pakken?</h2>
+    <p class="section-label" data-da="Udforsk siden" data-en="Explore the site">Udforsk siden</p>
+    <h2 class="section-title" data-da="Hvad leder du efter?" data-en="What are you looking for?">Hvad leder du efter?</h2>
     <div class="divider"></div>
-    <div class="membership-cards">
+    <div class="quick-links-grid">
 
-      <div class="card featured">
-        <div class="card-badge" data-da="Anbefalet" data-en="Recommended">Anbefalet</div>
-        <div class="card-title" data-da="Sæsonmedlem" data-en="Season member">Sæsonmedlem</div>
-        <div class="card-price">150 kr <span data-da="/ sæson" data-en="/ season">/ sæson</span></div>
-        <ul>
-          <li data-da="Lycra t-shirt med LOTW logo og startnummer" data-en="Lycra t-shirt with LOTW logo and race number">Lycra t-shirt med LOTW logo og startnummer</li>
-          <li data-da="Race-fee: <strong>100 kr</strong> pr. event" data-en="Race fee: <strong>100 kr</strong> per event">Race-fee: <strong>100 kr</strong> pr. event</li>
-        </ul>
-      </div>
+      <a class="quick-card" href="om-os.html">
+        <h3 data-da="Om os" data-en="About us">Om os</h3>
+        <p data-da="Hvem er vi, og hvad koster det?" data-en="Who are we, and what does it cost?">Hvem er vi, og hvad koster det?</p>
+        <span class="arrow" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
 
-      <div class="card">
-        <div class="card-title" data-da="Ikke-medlem" data-en="Non-member">Ikke-medlem</div>
-        <div class="card-price">200 kr <span>/ event</span></div>
-        <ul>
-          <li data-da="Deltag i et enkelt race" data-en="Participate in a single race">Deltag i et enkelt race</li>
-        </ul>
-      </div>
+      <a class="quick-card" href="races.html">
+        <h3>Races</h3>
+        <p data-da="Sæson 2026 – datoer og program" data-en="Season 2026 – dates and programme">Sæson 2026 – datoer og program</p>
+        <span class="arrow" data-da="Se races →" data-en="See races →">Se races →</span>
+      </a>
+
+      <a class="quick-card" href="tilmelding.html">
+        <h3 data-da="Tilmelding" data-en="Sign up">Tilmelding</h3>
+        <p data-da="Tilmeld dig som medlem eller til næste race" data-en="Sign up as a member or for the next race">Tilmeld dig som medlem eller til næste race</p>
+        <span class="arrow" data-da="Tilmeld →" data-en="Sign up →">Tilmeld →</span>
+      </a>
+
+      <a class="quick-card" href="galleri.html">
+        <h3 data-da="Galleri" data-en="Gallery">Galleri</h3>
+        <p data-da="Fotos og videoer fra vores events" data-en="Photos and videos from our events">Fotos og videoer fra vores events</p>
+        <span class="arrow" data-da="Se galleri →" data-en="See gallery →">Se galleri →</span>
+      </a>
 
     </div>
-    <p style="margin-top:2rem; font-size:0.85rem; opacity:0.55;" data-da="Kontingent tilbagebetales ikke. Race-fee tilbagebetales ved aflysning." data-en="Membership fee is non-refundable. Race fee is refunded in case of cancellation.">Kontingent tilbagebetales ikke. Race-fee tilbagebetales ved aflysning.</p>
-  </div>
-</section>
-
-<!-- RACES -->
-<section class="races" id="races">
-  <div class="container">
-    <p class="section-label" data-da="Sæson 2026" data-en="Season 2026">Sæson 2026</p>
-    <h2 class="section-title" data-da="Årets races" data-en="This year's races">Årets races</h2>
-    <div class="divider"></div>
-
-    <div class="race-list">
-      <div class="race-item">
-        <div>
-          <div class="race-date">24–25</div>
-          <div class="race-month" data-da="Maj" data-en="May">Maj</div>
-        </div>
-        <div class="race-info">
-          <h3>Race #1 – Ebeltoft Bugt</h3>
-          <p data-da="Downwind course + rundbane · Surfline udstyrsdemo" data-en="Downwind course + lap race · Surfline gear demo">Downwind course + rundbane · Surfline udstyrsdemo</p>
-        </div>
-        <div class="race-badge" data-da="Afholdt" data-en="Completed">Afholdt</div>
-      </div>
-
-      <div class="race-item">
-        <div>
-          <div class="race-date">20-21</div>
-          <div class="race-month" data-da="Juni" data-en="June">Juni</div>
-        </div>
-        <div class="race-info">
-          <h3>Race #2 – Ebeltoft Bugt</h3>
-          <p data-da="Program kommer" data-en="Programme coming soon">Program kommer</p>
-        </div>
-        <div class="race-badge next" data-da="Næste race!" data-en="Next race!">Næste race!</div>
-      </div>
-
-      <div class="race-item">
-        <div>
-          <div class="race-date">Sept.</div>
-          <div class="race-month">2026</div>
-        </div>
-        <div class="race-info">
-          <h3>Race #3 – TBA</h3>
-          <p data-da="Dato annonceres snarest" data-en="Date to be announced">Dato annonceres snarest</p>
-        </div>
-        <div class="race-badge" data-da="Kommende" data-en="Upcoming">Kommende</div>
-      </div>
-
-      <div class="race-item">
-        <div>
-          <div class="race-date">Okt.</div>
-          <div class="race-month">2026</div>
-        </div>
-        <div class="race-info">
-          <h3>Race #4 – TBA</h3>
-          <p data-da="Sæsonafslutning · Dato annonceres snarest" data-en="Season finale · Date to be announced">Sæsonafslutning · Dato annonceres snarest</p>
-        </div>
-        <div class="race-badge" data-da="Kommende" data-en="Upcoming">Kommende</div>
-      </div>
-    </div>
-
-    <p style="margin-top:2rem; font-size:0.85rem; opacity:0.55;" data-da="Konkret tidsplan for hvert event annonceres når vejrudsigten er klar." data-en="Detailed schedule for each event will be announced when the weather forecast is ready.">Konkret tidsplan for hvert event annonceres når vejrudsigten er klar.</p>
-  </div>
-</section>
-
-<!-- PROGRAM RACE #1 -->
-<section style="background:var(--navy-dark); padding:4rem 2rem;">
-  <div class="container">
-    <p class="section-label" data-da="Program" data-en="Programme">Program</p>
-    <h2 class="section-title" data-da="Race #1 · 24-25 Maj" data-en="Race #1 · 24-25 May">Race #1 · 24-25 Maj</h2>
-    <div class="divider"></div>
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-top:1.5rem;">
-      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
-        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Check-in</div>
-        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Velkomst &amp; briefing · Tidsplan offentliggøres nærmere eventet" data-en="Welcome &amp; briefing · Schedule published closer to the event">Velkomst &amp; briefing · Tidsplan offentliggøres nærmere eventet</div>
-      </div>
-      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
-        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Race 1</div>
-        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;">Downwind course</div>
-      </div>
-      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
-        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;" data-da="Pause" data-en="Break">Pause</div>
-        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Sodvand, øl &amp; pølser · Surfline udstyrsdemo" data-en="Soft drinks, beer &amp; hot dogs · Surfline gear demo">Sodvand, øl &amp; pølser · Surfline udstyrsdemo</div>
-      </div>
-      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
-        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;">Race 2</div>
-        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Bane med runder" data-en="Lap course">Bane med runder</div>
-      </div>
-      <div style="border-left:2px solid var(--gold); padding-left:1rem;">
-        <div style="font-family:'Bebas Neue',sans-serif; color:var(--gold); font-size:1rem; letter-spacing:0.1em;" data-da="Afslutning" data-en="Finish">Afslutning</div>
-        <div style="font-size:0.9rem; opacity:0.8; margin-top:0.3rem;" data-da="Præmier &amp; fælles fejring" data-en="Prizes &amp; celebration">Præmier &amp; fælles fejring</div>
-      </div>
-    </div>
-    <p style="margin-top:2rem; font-size:0.9rem; opacity:0.65;" data-da="Alle niveauer er velkomne 🤙" data-en="All levels welcome 🤙">Alle niveauer er velkomne 🤙</p>
   </div>
 </section>
 
@@ -643,196 +90,21 @@
   </div>
 </section>
 
-<!-- TILMELDING -->
-<section class="signup" id="tilmeld">
-  <div class="container">
-    <p class="section-label" data-da="Tilmelding" data-en="Sign up">Tilmelding</p>
-    <h2 class="section-title" data-da="Kom med på vandet" data-en="Join us on the water">Kom med på vandet</h2>
-    <div class="divider"></div>
-
-    <div class="signup-box">
-
-      <div class="form-success" id="formSuccess">
-        <h3 data-da="Tak for din tilmelding!" data-en="Thanks for signing up!">Tak for din tilmelding!</h3>
-        <p data-da="Vi har sendt en bekræftelse til din e-mailadresse." data-en="We've sent a confirmation to your email address." style="opacity:0.8;">Vi har sendt en bekræftelse til din e-mailadresse.</p>
-      </div>
-
-      <form id="tilmeldingForm" name="tilmelding" method="POST" netlify netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="tilmelding">
-        <input type="hidden" name="type" id="typeHidden">
-        <input type="hidden" name="sprog" id="sprogHidden" value="da">
-        <p style="display:none"><input name="bot-field"></p>
-
-        <div class="form-group">
-          <label for="navn" data-da="NAVN" data-en="NAME">NAVN</label>
-          <input type="text" id="navn" name="navn" placeholder="Dit fulde navn" required>
-        </div>
-        <div class="form-group">
-          <label for="email" data-da="E-MAIL" data-en="EMAIL">E-MAIL</label>
-          <input type="email" id="email" name="email" placeholder="din@email.dk" required>
-        </div>
-        <div class="form-group">
-          <label for="telefon" data-da="TELEFON" data-en="PHONE">TELEFON</label>
-          <input type="tel" id="telefon" name="telefon" placeholder="+45 00 00 00 00" required>
-        </div>
-
-        <!-- Spørgsmål 1 -->
-        <div class="form-group" id="q1">
-          <label data-da="ER DU ALLEREDE MEDLEM?" data-en="ARE YOU ALREADY A MEMBER?">ER DU ALLEREDE MEDLEM?</label>
-          <div class="radio-group">
-            <label><input type="radio" name="er_medlem" value="ja" onchange="handleMedlem()"><span class="radio-box"></span> <span data-da="Ja" data-en="Yes">Ja</span></label>
-            <label><input type="radio" name="er_medlem" value="nej" onchange="handleMedlem()"><span class="radio-box"></span> <span data-da="Nej" data-en="No">Nej</span></label>
-          </div>
-        </div>
-
-        <!-- Svar: allerede medlem → vis pris direkte -->
-        <div id="result-ja" style="display:none;">
-          <div class="price-display">
-            <div class="price-display-title" data-da="Race 20.06–21.06 tilmelding" data-en="Race 20.06–21.06 registration">Race 20.06–21.06 tilmelding</div>
-            <div class="price-display-amount">100 kr.</div>
-          </div>
-        </div>
-
-        <!-- Spørgsmål 2 (kun hvis ikke-medlem) -->
-        <div class="form-group" id="q2" style="display:none;">
-          <label data-da="ØNSKER DU AT BLIVE MEDLEM?" data-en="WOULD YOU LIKE TO BECOME A MEMBER?">ØNSKER DU AT BLIVE MEDLEM?</label>
-          <div class="radio-group">
-            <label><input type="radio" name="vil_medlem" value="ja" onchange="handleVilMedlem()"><span class="radio-box"></span> <span data-da="Ja" data-en="Yes">Ja</span></label>
-            <label><input type="radio" name="vil_medlem" value="nej" onchange="handleVilMedlem()"><span class="radio-box"></span> <span data-da="Nej" data-en="No">Nej</span></label>
-          </div>
-        </div>
-
-        <!-- Svar: vil blive medlem → to valgmuligheder -->
-        <div id="result-vil-ja" style="display:none;">
-          <label class="option-card" id="card-kun-medlem" onclick="selectOption(this, 'membership-only')">
-            <input type="radio" name="valg" value="Kun medlemskab - 150 kr.">
-            <div class="option-card-label">
-              <div class="option-card-title" data-da="Kun medlemskab" data-en="Membership only">Kun medlemskab</div>
-              <div class="option-card-price">150 kr.</div>
-            </div>
-          </label>
-          <label class="option-card" id="card-med-race" onclick="selectOption(this, 'membership-race')">
-            <input type="radio" name="valg" value="Medlemskab og race 20.06-21.06 - 250 kr.">
-            <div class="option-card-label">
-              <div class="option-card-title" data-da="Medlemskab og race 20.06–21.06" data-en="Membership and race 20.06–21.06">Medlemskab og race 20.06–21.06</div>
-              <div class="option-card-price">250 kr.</div>
-            </div>
-          </label>
-        </div>
-
-        <!-- Svar: vil ikke blive medlem → vis pris direkte -->
-        <div id="result-vil-nej" style="display:none;">
-          <div class="price-display">
-            <div class="price-display-title" data-da="Race 20.06–21.06 tilmelding uden medlemskab" data-en="Race 20.06–21.06 registration without membership">Race 20.06–21.06 tilmelding uden medlemskab</div>
-            <div class="price-display-amount">200 kr.</div>
-          </div>
-        </div>
-
-        <button type="submit" id="submitBtn" class="btn btn-solid" style="width:100%; margin-top:1.5rem; display:none;" data-da="Send tilmelding" data-en="Submit registration">Send tilmelding</button>
-      </form>
-
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <img class="footer-logo" src="LOGO_transparent.png" alt="LOTW">
+  <div class="footer-links">
+    <a href="om-os.html" data-da="Om os" data-en="About">Om os</a>
+    <a href="races.html">Races</a>
+    <a href="tilmelding.html" data-da="Tilmeld" data-en="Sign up">Tilmeld</a>
+    <a href="galleri.html" data-da="Galleri" data-en="Gallery">Galleri</a>
+    <a href="https://www.facebook.com/profile.php?id=61580798024798" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/lordofthewings_dk" target="_blank">Instagram</a>
+  </div>
   <p data-da="Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026" data-en="Lord of the Wings · Ebeltoft, Denmark · Founded March 2026">Lord of the Wings · Ebeltoft, Danmark · Stiftet marts 2026</p>
   <p style="margin-top:0.4rem;">lordofthewingsdk@gmail.com</p>
 </footer>
 
-<script>
-  // Sprog-toggle
-  let lang = 'da';
-  function toggleLang() {
-    lang = lang === 'da' ? 'en' : 'da';
-    document.getElementById('langToggle').textContent = lang === 'da' ? 'ENGLISH' : 'DANISH';
-    document.querySelectorAll('[data-da]').forEach(el => {
-      el.innerHTML = el.getAttribute('data-' + lang);
-    });
-    const sprogField = document.getElementById('sprogHidden');
-    if (sprogField) sprogField.value = lang;
-  }
-
-  // Oversættelser for tilmeldingstype
-  const typeText = {
-    'member-race':     { da: 'Race 20.06-21.06 tilmelding - 100 kr.',                    en: 'Race 20.06-21.06 registration - 100 kr.' },
-    'membership-only': { da: 'Kun medlemskab - 150 kr.',                                  en: 'Membership only - 150 kr.' },
-    'membership-race': { da: 'Medlemskab og race 20.06-21.06 - 250 kr.',                  en: 'Membership and race 20.06-21.06 - 250 kr.' },
-    'race-only':       { da: 'Race 20.06-21.06 tilmelding uden medlemskab - 200 kr.',     en: 'Race 20.06-21.06 registration without membership - 200 kr.' },
-  };
-
-  // Formular-logik
-  let selectedTypeKey = '';
-
-  function hide(...ids) { ids.forEach(id => document.getElementById(id).style.display = 'none'); }
-  function show(...ids) { ids.forEach(id => document.getElementById(id).style.display = ''); }
-
-  function handleMedlem() {
-    const val = document.querySelector('input[name="er_medlem"]:checked')?.value;
-    hide('result-ja', 'q2', 'result-vil-ja', 'result-vil-nej', 'submitBtn');
-    document.querySelectorAll('input[name="vil_medlem"]').forEach(r => r.checked = false);
-    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-    selectedTypeKey = '';
-    if (val === 'ja') {
-      selectedTypeKey = 'member-race';
-      show('result-ja', 'submitBtn');
-    } else if (val === 'nej') {
-      show('q2');
-    }
-  }
-
-  function handleVilMedlem() {
-    const val = document.querySelector('input[name="vil_medlem"]:checked')?.value;
-    hide('result-vil-ja', 'result-vil-nej', 'submitBtn');
-    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-    selectedTypeKey = '';
-    if (val === 'ja') {
-      show('result-vil-ja');
-    } else if (val === 'nej') {
-      selectedTypeKey = 'race-only';
-      show('result-vil-nej', 'submitBtn');
-    }
-  }
-
-  function selectOption(card, key) {
-    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    selectedTypeKey = key;
-    show('submitBtn');
-  }
-
-  // Netlify Forms – AJAX indsendelse
-  const form = document.getElementById('tilmeldingForm');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!selectedTypeKey) return;
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = '…';
-    try {
-      const body = new URLSearchParams({
-        'form-name': 'tilmelding',
-        'navn':      document.getElementById('navn').value,
-        'email':     document.getElementById('email').value,
-        'telefon':   document.getElementById('telefon').value,
-        'type':      typeText[selectedTypeKey][lang],
-        'sprog':     document.getElementById('sprogHidden').value,
-      }).toString();
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body
-      });
-      form.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    } catch {
-      btn.disabled = false;
-      btn.textContent = lang === 'da' ? 'Send tilmelding' : 'Submit registration';
-      alert(lang === 'da' ? 'Noget gik galt – prøv igen.' : 'Something went wrong – please try again.');
-    }
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>
