@@ -38,10 +38,16 @@
         <p data-da="Vi har sendt en bekræftelse til din e-mailadresse." data-en="We've sent a confirmation to your email address." style="opacity:0.8;">Vi har sendt en bekræftelse til din e-mailadresse.</p>
       </div>
 
-      <form id="tilmeldingForm" name="tilmelding" method="POST" netlify netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="tilmelding">
+      <!-- Skeleton forms til Netlify registrering -->
+      <form name="tilmelding-da" netlify netlify-honeypot="bot-field" hidden>
+        <input name="navn"><input name="email"><input name="telefon"><input name="type"><input name="bot-field">
+      </form>
+      <form name="tilmelding-en" netlify netlify-honeypot="bot-field" hidden>
+        <input name="navn"><input name="email"><input name="telefon"><input name="type"><input name="bot-field">
+      </form>
+
+      <form id="tilmeldingForm">
         <input type="hidden" name="type" id="typeHidden">
-        <input type="hidden" name="sprog" id="sprogHidden" value="da">
         <p style="display:none"><input name="bot-field"></p>
 
         <div class="form-group">
@@ -232,12 +238,11 @@
     btn.textContent = '…';
     try {
       const body = new URLSearchParams({
-        'form-name': 'tilmelding',
+        'form-name': lang === 'da' ? 'tilmelding-da' : 'tilmelding-en',
         'navn':      document.getElementById('navn').value,
         'email':     document.getElementById('email').value,
         'telefon':   document.getElementById('telefon').value,
         'type':      typeText[selectedTypeKey][lang],
-        'sprog':     document.getElementById('sprogHidden').value,
       }).toString();
       await fetch('/', {
         method: 'POST',
