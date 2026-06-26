@@ -75,7 +75,7 @@
         <!-- Svar: allerede medlem → vis pris direkte -->
         <div id="result-ja" style="display:none;">
           <div class="price-display">
-            <div class="price-display-title" data-da="Race 27.06–28.06 tilmelding" data-en="Race 27.06–28.06 registration">Race 27.06–28.06 tilmelding</div>
+            <div class="price-display-title" data-da="Race 29.08–30.08 tilmelding" data-en="Race 29.08–30.08 registration">Race 29.08–30.08 tilmelding</div>
             <div class="price-display-amount">100 kr.</div>
           </div>
         </div>
@@ -99,9 +99,9 @@
             </div>
           </label>
           <label class="option-card" id="card-med-race" onclick="selectOption(this, 'membership-race')">
-            <input type="radio" name="valg" value="Medlemskab og race 27.06-28.06 - 250 kr.">
+            <input type="radio" name="valg" value="Medlemskab og race 29.08-30.08 - 250 kr.">
             <div class="option-card-label">
-              <div class="option-card-title" data-da="Medlemskab og race 27.06–28.06" data-en="Membership and race 27.06–28.06">Medlemskab og race 27.06–28.06</div>
+              <div class="option-card-title" data-da="Medlemskab og race 29.08–30.08" data-en="Membership and race 29.08–30.08">Medlemskab og race 29.08–30.08</div>
               <div class="option-card-price">250 kr.</div>
             </div>
           </label>
@@ -110,7 +110,7 @@
         <!-- Svar: vil ikke blive medlem → vis pris direkte -->
         <div id="result-vil-nej" style="display:none;">
           <div class="price-display">
-            <div class="price-display-title" data-da="Race 27.06–28.06 tilmelding uden medlemskab" data-en="Race 27.06–28.06 registration without membership">Race 27.06–28.06 tilmelding uden medlemskab</div>
+            <div class="price-display-title" data-da="Race 29.08–30.08 tilmelding uden medlemskab" data-en="Race 29.08–30.08 registration without membership">Race 29.08–30.08 tilmelding uden medlemskab</div>
             <div class="price-display-amount">200 kr.</div>
           </div>
         </div>
@@ -183,10 +183,10 @@
 <script>
   // ── Tilmelding form logic ─────────────────────────────────────────────────
   const typeText = {
-    'member-race':     { da: 'Race 27.06-28.06 tilmelding - 100 kr.',                   en: 'Race 27.06-28.06 registration - 100 kr.' },
+    'member-race':     { da: 'Race 29.08-30.08 tilmelding - 100 kr.',                   en: 'Race 29.08-30.08 registration - 100 kr.' },
     'membership-only': { da: 'Kun medlemskab - 150 kr.',                                 en: 'Membership only - 150 kr.' },
-    'membership-race': { da: 'Medlemskab og race 27.06-28.06 - 250 kr.',                 en: 'Membership and race 27.06-28.06 - 250 kr.' },
-    'race-only':       { da: 'Race 27.06-28.06 tilmelding uden medlemskab - 200 kr.',    en: 'Race 27.06-28.06 registration without membership - 200 kr.' },
+    'membership-race': { da: 'Medlemskab og race 29.08-30.08 - 250 kr.',                 en: 'Membership and race 29.08-30.08 - 250 kr.' },
+    'race-only':       { da: 'Race 29.08-30.08 tilmelding uden medlemskab - 200 kr.',    en: 'Race 29.08-30.08 registration without membership - 200 kr.' },
   };
 
   let selectedTypeKey = '';
